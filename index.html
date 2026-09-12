@@ -1,919 +1,1044 @@
-<!DOCTYPE html>  <html lang="ar" dir="rtl">    <head>    
-<meta charset="UTF-8">    
-<meta name="viewport" content="width=device-width,initial-scale=1.0">  <title>🏆 نقاط ومتجر الجروب</title>  <style>    
-*{box-sizing:border-box}    body{
-margin:0;
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#6a11cb,#2575fc,#00c6ff);
-min-height:100vh;
-color:white;
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>🇸🇦『𝓑𝓻𝓪𝓲𝓷𝓼𝓽𝓸𝓻𝓶』💬🈴 🇯🇵</title><style>
+*{
+  box-sizing:border-box;
 }
 
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  color:#20264d;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 10% 10%,#dff5ff 0%,transparent 35%),
+    radial-gradient(circle at 90% 20%,#e9ddff 0%,transparent 35%),
+    linear-gradient(135deg,#f7fbff,#eef2ff,#ffffff);
+}
+
+/* الصفحة */
 .container{
-width:94%;
-max-width:700px;
-margin:20px auto;
+  width:94%;
+  max-width:850px;
+  margin:auto;
+  padding:20px 0 45px;
 }
 
-.header{
-text-align:center;
-background:rgba(255,255,255,.16);
-padding:22px;
-border-radius:22px;
-backdrop-filter:blur(10px);
-box-shadow:0 8px 25px #0004;
-margin-bottom:18px;
+/* الهيدر */
+header{
+  text-align:center;
+  padding:30px 15px;
+  margin-bottom:20px;
+  border-radius:28px;
+
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(255,255,255,.9);
+
+  box-shadow:
+    0 15px 40px rgba(72,91,160,.15);
+
+  backdrop-filter:blur(15px);
 }
 
-h1{margin:0;font-size:30px}
-
-.subtitle{
-margin-top:8px;
-color:#eee;
+header h1{
+  margin:0;
+  font-size:27px;
+  color:#303b91;
+  text-shadow:0 3px 15px rgba(70,80,180,.15);
 }
 
-.tabs{
-display:flex;
-gap:8px;
-margin-bottom:18px;
+.sponsor{
+  margin-top:12px;
+  font-size:17px;
+  color:#6d5bc7;
 }
 
-.tab{
-flex:1;
-background:rgba(255,255,255,.2);
-color:white;
-font-weight:bold;
+/* الكروت */
+.card{
+  background:rgba(255,255,255,.75);
+
+  border:1px solid rgba(255,255,255,.95);
+
+  border-radius:24px;
+  padding:20px;
+  margin-bottom:18px;
+
+  box-shadow:
+    0 12px 35px rgba(74,91,160,.12);
+
+  backdrop-filter:blur(15px);
 }
 
-.tab.active{
-background:white;
-color:#2575fc;
+/* تسجيل الدخول */
+.login{
+  text-align:center;
 }
 
-.section{display:none}
-.section.active{display:block}
-
-.add{
-display:flex;
-gap:8px;
-margin-bottom:18px;
+.loginTitle{
+  font-size:25px;
+  margin-bottom:8px;
+  color:#303b91;
 }
 
 input{
-flex:1;
-padding:14px;
-border:0;
-outline:0;
-border-radius:13px;
-font-size:16px;
+  width:100%;
+  padding:15px;
+  margin:10px 0;
+
+  border:2px solid #e3e7ff;
+  outline:none;
+  border-radius:15px;
+
+  background:#ffffff;
+  color:#20264d;
+
+  font-size:16px;
+  text-align:center;
+
+  transition:.2s;
 }
 
+input:focus{
+  border-color:#7185ff;
+  box-shadow:0 0 0 4px rgba(113,133,255,.12);
+}
+
+input::placeholder{
+  color:#9aa1bb;
+}
+
+/* الأزرار */
 button{
-border:0;
-border-radius:11px;
-padding:11px 14px;
-font-size:14px;
-font-weight:bold;
-cursor:pointer;
+  border:none;
+  border-radius:14px;
+
+  padding:12px 17px;
+  margin:5px;
+
+  font-size:15px;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:.2s;
 }
 
-.add button{
-background:linear-gradient(135deg,#00e676,#00c853);
-color:white;
+button:hover{
+  transform:translateY(-2px);
 }
 
-.card{
-background:rgba(255,255,255,.96);
-color:#222;
-border-radius:19px;
-padding:16px;
-margin-bottom:13px;
-box-shadow:0 7px 20px #0004;
+.mainBtn{
+  width:100%;
+  color:white;
+
+  background:
+    linear-gradient(90deg,#637cff,#8d65e8);
+
+  box-shadow:
+    0 8px 20px rgba(103,112,235,.22);
 }
 
-.top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-margin-bottom:13px;
+.blue{
+  background:#6481ff;
+  color:white;
 }
 
-.name{
-font-size:19px;
-font-weight:bold;
+.orange{
+  background:#ffad5c;
+  color:white;
+}
+
+.red{
+  background:#ff6d86;
+  color:white;
+}
+
+/* إخفاء */
+.hidden{
+  display:none;
+}
+
+/* بيانات اللاعب */
+.userBox{
+  text-align:center;
+}
+
+.userName{
+  font-size:28px;
+  font-weight:bold;
+  color:#303b91;
 }
 
 .points{
-background:linear-gradient(135deg,#ff9800,#ff5722);
-color:white;
-padding:8px 12px;
-border-radius:12px;
-font-weight:bold;
-white-space:nowrap;
+  font-size:40px;
+  color:#725be6;
+  font-weight:bold;
+  margin:12px 0;
 }
 
-.rank{margin-left:5px}
-
-.actions{
-display:flex;
-gap:7px;
-flex-wrap:wrap;
-}
-
-.addpoints{
-background:linear-gradient(135deg,#00c853,#00a844);
-color:white;
-}
-
-.minus{
-background:linear-gradient(135deg,#ff9800,#f57c00);
-color:white;
-}
-
-.delete{
-background:linear-gradient(135deg,#f44336,#c62828);
-color:white;
-}
-
-.store-title{
-text-align:center;
-margin:8px 0 18px;
-}
-
-.shop-item{
-background:rgba(255,255,255,.96);
-color:#222;
-border-radius:18px;
-padding:16px;
-margin-bottom:12px;
-box-shadow:0 7px 18px #0004;
-}
-
-.shop-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-}
-
-.item-name{
-font-size:18px;
-font-weight:bold;
-}
-
-.price{
-background:linear-gradient(135deg,#ff9800,#ff5722);
-color:white;
-padding:7px 10px;
-border-radius:10px;
-font-weight:bold;
-white-space:nowrap;
-}
-
-.description{
-color:#666;
-margin:8px 0 12px;
-}
-
-.buy{
-width:100%;
-background:linear-gradient(135deg,#6a11cb,#2575fc);
-color:white;
-}
-
-.empty{
-background:rgba(255,255,255,.2);
-border-radius:18px;
-padding:30px;
-text-align:center;
-}
-
-.select-player{
-width:100%;
-margin-bottom:15px;
-padding:13px;
-border:0;
-border-radius:12px;
-font-size:16px;
-}
-
-.balance{
-background:rgba(255,255,255,.18);
-padding:13px;
-border-radius:13px;
-text-align:center;
-margin-bottom:15px;
-}
-
-/* النوافذ */
-
-.modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.68);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:999;
-padding:20px;
-}
-
-.modal-box{
-width:100%;
-max-width:400px;
-background:white;
-color:#222;
-border-radius:24px;
-padding:24px;
-text-align:center;
-box-shadow:0 15px 50px #0008;
-animation:pop .2s ease;
-}
-
-@keyframes pop{
-from{
-transform:scale(.8);
-opacity:0;
-}
-to{
-transform:scale(1);
-opacity:1;
-}
-}
-
-.modal-icon{
-font-size:50px;
-margin-bottom:8px;
-}
-
-.modal-box h2{
-margin:5px 0 15px;
-}
-
-.modal-info{
-background:#f3f4f6;
-border-radius:15px;
-padding:14px;
-margin-bottom:15px;
-line-height:1.8;
-}
-
-.modal-buttons{
-display:flex;
-gap:10px;
-}
-
-.confirm{
-flex:1;
-background:#00c853;
-color:white;
-font-size:17px;
-}
-
-.cancel{
-flex:1;
-background:#e53935;
-color:white;
-font-size:17px;
-}
-
-.success{
-background:#00c853;
-color:white;
-}
-
-.warning{
-background:#ff9800;
-color:white;
-}
-
-.number-input{
-width:100%;
-margin:12px 0;
-border:2px solid #ddd;
-text-align:center;
-font-size:22px;
-font-weight:bold;
-}
-
-</style>  </head>  <body>  <div class="container">  <div class="header">
-
-<h1>🏆 نقاط ومتجر الجروب</h1>    
-<div class="subtitle">اجمع النقاط واستخدمها في المتجر 🎁</div>    
-</div>  <div class="tabs">  <button class="tab active" onclick="openTab('points',this)">    
-🏆 النقاط    
-</button>  <button class="tab" onclick="openTab('store',this)">    
-🛒 المتجر    
-</button>  </div>  <!-- النقاط -->  <div id="points" class="section active">  <div class="add">  <input id="name" placeholder="👤 اسم العضو">  <button onclick="addPlayer()">➕ إضافة</button>  </div>  <div id="players"></div>  </div>  <!-- المتجر -->  <div id="store" class="section">  <h2 class="store-title">🛒 متجر الجروب</h2>  <select id="buyer"    
-class="select-player"    
-onchange="updateBalance()">  <option value="">👤 اختر العضو</option>  </select>  <div id="balance" class="balance">    
-اختر عضوًا لعرض رصيده ⭐    
-</div>  <div id="shop"></div>  </div>  </div>  <!-- نافذة إضافة / خصم -->  <div id="pointsModal" class="modal">  <div class="modal-box">  <div class="modal-icon">⭐</div>  <h2 id="modalTitle">إضافة نقاط</h2>  <input  
-id="numberInput"  
-class="number-input"  
-type="number"  
-inputmode="numeric"  
-placeholder="اكتب عدد النقاط"  
-min="1"  > 
-
-<div class="modal-buttons">  <button class="confirm" onclick="confirmPoints()">    
-✅ تأكيد    
-</button>  <button class="cancel" onclick="closeModal()">    
-❌ إلغاء    
-</button>  </div>  </div>  </div>  <!-- نافذة شراء -->  <div id="buyModal" class="modal">  <div class="modal-box">  <div class="modal-icon">🛒</div>  <h2>تأكيد الشراء</h2>  <div id="buyInfo" class="modal-info"></div>  <div class="modal-buttons">  <button class="confirm" onclick="confirmBuy()">    
-✅ تأكيد الشراء    
-</button>  <button class="cancel" onclick="closeBuyModal()">    
-❌ إلغاء    
-</button>  </div>  </div>  </div>  <!-- نافذة رسالة -->  <div id="messageModal" class="modal">  <div class="modal-box">  <div id="messageIcon" class="modal-icon">🎉</div>  <h2 id="messageTitle">تم بنجاح</h2>  <div id="messageText" class="modal-info"></div>  <button    
-class="confirm"    
-style="width:100%"    
-onclick="closeMessage()">  تمام 👍
-
-</button>  </div>  </div>  <script>
-
-let players =
-JSON.parse(localStorage.getItem("groupPlayers")) || [];
-
-let currentIndex=null;
-let currentAction=null;
-
-let pendingBuyIndex=null;
-
-/* المتجر */
-
-const shopItems=[
-
-{name:"💡 تلميح في فعالية",price:30,desc:"الحصول على تلميح واحد في فعالية."},
-
-{name:"🔄 تغيير سؤال",price:50,desc:"تغيير سؤال واحد في الفعالية."},
-
-{name:"🎯 اختيار الموضوع",price:70,desc:"تختار موضوع الفعالية القادمة."},
-
-{name:"🔁 محاولة إضافية",price:80,desc:"فرصة إضافية في فعالية."},
-
-{name:"🛡️ حصانة",price:100,desc:"لا تخسر نقاطك في فعالية واحدة."},
-
-{name:"👑 لقب خاص",price:150,desc:"تحصل على لقب مميز داخل الجروب."},
-
-{name:"⚡ مضاعفة النقاط",price:200,desc:"مضاعفة نقاطك في فعالية واحدة."},
-
-{name:"🎲 صندوق الحظ",price:100,desc:"جائزة عشوائية من إدارة الجروب."},
-
-{name:"🔥 فرصة ذهبية",price:250,desc:"ميزة قوية في فعالية تختارها الإدارة."},
-
-{name:"🏆 دخول بطولة خاصة",price:300,desc:"الدخول في بطولة خاصة للجروب."},
-
-{name:"🎁 جائزة مفاجأة",price:350,desc:"جائزة سرية يحددها المسؤول."},
-
-{name:"💎 VIP لمدة أسبوع",price:500,desc:"ميزة VIP لمدة أسبوع."},
-
-{name:"👑 ملك الجروب",price:700,desc:"لقب خاص لمدة أسبوع."},
-
-{name:"🌟 نجم الأسبوع",price:400,desc:"لقب نجم الأسبوع."},
-
-{name:"🚫 منع خصم",price:180,desc:"تحمي نقاطك من خصم واحد."},
-
-{name:"💰 استرداد نقاط",price:220,desc:"استرداد جزء من نقاط عملية شراء سابقة."}
-
-];
-
-/* حفظ */
-
-function save(){
-
-localStorage.setItem(
-"groupPlayers",
-JSON.stringify(players)
-);
-
-}
-
-/* إضافة عضو */
-
-function addPlayer(){
-
-let input=document.getElementById("name");
-
-let name=input.value.trim();
-
-if(!name){
-
-alert("⚠️ اكتب اسم العضو أولاً");
-
-return;
-
-}
-
-players.push({
-name:name,
-points:0
-});
-
-input.value="";
-
-save();
-
-show();
-
-updateBuyer();
-
-}
-
-/* إضافة نقاط */
-
-function addPoints(index){
-
-currentIndex=index;
-currentAction="add";
-
-document.getElementById("modalTitle").innerText=
-"⭐ إضافة نقاط لـ "+players[index].name;
-
-document.getElementById("numberInput").value="";
-
-document.getElementById("pointsModal").style.display="flex";
-
-setTimeout(()=>{
-document.getElementById("numberInput").focus();
-},100);
-
-}
-
-/* خصم نقاط */
-
-function minusPoints(index){
-
-currentIndex=index;
-currentAction="minus";
-
-document.getElementById("modalTitle").innerText=
-"➖ خصم نقاط من "+players[index].name;
-
-document.getElementById("numberInput").value="";
-
-document.getElementById("pointsModal").style.display="flex";
-
-setTimeout(()=>{
-document.getElementById("numberInput").focus();
-},100);
-
-}
-
-/* تأكيد النقاط */
-
-function confirmPoints(){
-
-let amount=Number(
-document.getElementById("numberInput").value
-);
-
-if(!Number.isInteger(amount) || amount<=0){
-
-alert("⚠️ اكتب رقم صحيح أكبر من صفر");
-
-return;
-
-}
-
-if(currentAction==="add"){
-
-players[currentIndex].points+=amount;
-
-}
-
-else if(currentAction==="minus"){
-
-players[currentIndex].points-=amount;
-
-if(players[currentIndex].points<0){
-
-players[currentIndex].points=0;
-
-}
-
-}
-
-save();
-
-show();
-
-updateBuyer();
-
-closeModal();
-
-}
-
-/* إغلاق نافذة النقاط */
-
-function closeModal(){
-
-document.getElementById("pointsModal").style.display="none";
-
-currentIndex=null;
-currentAction=null;
-
-}
-
-/* حذف عضو */
-
-function deletePlayer(index){
-
-if(confirm("🗑️ هل أنت متأكد من حذف هذا العضو؟")){
-
-players.splice(index,1);
-
-save();
-
-show();
-
-updateBuyer();
-
-}
-
-}
-
-/* عرض الأعضاء */
-
-function show(){
-
-let box=document.getElementById("players");
-
-box.innerHTML="";
-
-if(players.length===0){
-
-box.innerHTML=`
-
-<div class="empty">    
-👥 لا يوجد أعضاء حتى الآن    
-<br><br>    
-أضف أول عضو للجروب ⭐    
-</div>    `;
-
-return;
-
-}
-
-players.sort((a,b)=>b.points-a.points);
-
-players.forEach((player,index)=>{
-
-let medal="";
-
-if(index===0) medal="🥇";
-else if(index===1) medal="🥈";
-else if(index===2) medal="🥉";
-
-box.innerHTML+=`
-
-<div class="card">    <div class="top">    <div class="name">    <span class="rank">    
-${medal || (index+1+".")}    
-</span>    ${escapeHTML(player.name)}
-
-</div>    <div class="points">    
-⭐ ${player.points}    
-</div>    </div>    <div class="actions">    <button    
-class="addpoints"    
-onclick="addPoints(${index})">
-
-➕ إضافة نقاط
-
-</button>    <button    
-class="minus"    
-onclick="minusPoints(${index})">
-
-➖ خصم
-
-</button>    <button    
-class="delete"    
-onclick="deletePlayer(${index})">
-
-🗑️ حذف
-
-</button>    </div>    </div>    `;
-
-});
-
+.rank{
+  font-size:19px;
+  color:#707894;
 }
 
 /* التبويبات */
+.tabs{
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+}
 
-function openTab(id,button){
+.tabs button{
+  flex:1;
+  padding:14px;
+}
 
-document.querySelectorAll(".section")
-.forEach(x=>x.classList.remove("active"));
+/* التبويب */
+.tab{
+  display:none;
+}
 
-document.querySelectorAll(".tab")
-.forEach(x=>x.classList.remove("active"));
+.tab.active{
+  display:block;
+}
 
-document.getElementById(id)
-.classList.add("active");
+/* اللاعب */
+.player{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-button.classList.add("active");
+  background:
+    linear-gradient(135deg,#f8faff,#f1f4ff);
 
-if(id==="store") updateBuyer();
+  border:1px solid #e3e8ff;
+
+  border-radius:18px;
+  padding:15px;
+  margin:10px 0;
+
+  box-shadow:
+    0 6px 18px rgba(78,94,170,.08);
+}
+
+.playerName{
+  font-size:20px;
+  font-weight:bold;
+  color:#30375f;
+}
+
+.playerPoints{
+  color:#735de0;
+  margin-top:6px;
+  font-weight:bold;
+}
+
+.medal{
+  font-size:24px;
+  margin-left:7px;
+}
+
+/* المتجر */
+.shopItem{
+  background:
+    linear-gradient(135deg,#ffffff,#f5f7ff);
+
+  border:1px solid #e3e8ff;
+
+  border-radius:20px;
+  padding:17px;
+  margin:12px 0;
+
+  box-shadow:
+    0 7px 20px rgba(78,94,170,.08);
+}
+
+.shopItem h3{
+  margin:0 0 8px;
+  color:#353d76;
+}
+
+.shopItem p{
+  color:#707894;
+  line-height:1.7;
+}
+
+.price{
+  color:#735de0;
+  font-size:20px;
+  font-weight:bold;
+  margin:10px 0;
+}
+
+/* النص الصغير */
+.small{
+  color:#8990aa;
+  font-size:14px;
+}
+
+/* النوافذ */
+.modal{
+  position:fixed;
+  inset:0;
+
+  background:rgba(49,57,100,.35);
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+  z-index:1000;
+
+  backdrop-filter:blur(7px);
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modalBox{
+  width:100%;
+  max-width:420px;
+
+  background:#ffffff;
+
+  border:1px solid #e6eaff;
+
+  border-radius:25px;
+
+  padding:25px;
+
+  text-align:center;
+
+  box-shadow:
+    0 20px 60px rgba(49,61,130,.22);
+}
+
+.modalBox h2{
+  color:#303b91;
+}
+
+.message{
+  font-size:18px;
+  line-height:1.8;
+  color:#454d70;
+}
+
+/* العناوين */
+h2{
+  color:#303b91;
+}
+
+@media(max-width:600px){
+
+  .container{
+    width:95%;
+    padding-top:12px;
+  }
+
+  header{
+    padding:25px 10px;
+  }
+
+  header h1{
+    font-size:23px;
+  }
+
+  .tabs{
+    flex-direction:column;
+  }
+
+  .player{
+    text-align:center;
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .userName{
+    font-size:25px;
+  }
+
+  .points{
+    font-size:36px;
+  }
+}
+</style></head><body><div class="container"><header>
+  <h1>🇸🇦『𝓑𝓻𝓪𝓲𝓷𝓼𝓽𝓸𝓻𝓶』💬🈴 🇯🇵</h1>  <div class="sponsor">
+    برعاية <b>Sukuna</b> 👑
+  </div>
+</header><!-- تسجيل الدخول --><div id="loginScreen" class="card login">  <div class="loginTitle">
+    👋 تسجيل الدخول
+  </div>  <p class="small">
+    اكتب اسمك لمعرفة نقاطك ومركزك
+  </p><input
+id="loginName"
+type="text"
+placeholder="اكتب اسمك هنا"
+autocomplete="off"
+
+«»
+
+  <button class="mainBtn" onclick="login()">
+    🚀 دخول
+  </button>  <p id="loginError" style="color:#ff5d78;"></p></div><!-- الموقع --><div id="site" class="hidden">  <!-- بيانات اللاعب -->  <div class="card userBox"><div id="welcomeName" class="userName"></div>
+
+<div id="welcomeRank" class="rank"></div>
+
+<div id="welcomePoints" class="points"></div>
+
+<button class="red" onclick="logout()">
+  🚪 خروج
+</button>
+
+  </div>  <!-- الأزرار -->  <div class="tabs"><button
+  class="blue"
+  onclick="openTab('leaderboard')">
+  🏆 القائمة
+</button>
+
+<button
+  class="orange"
+  onclick="openTab('shop')">
+  🛒 المتجر
+</button>
+
+  </div>  <!-- القائمة -->  <div id="leaderboard" class="tab active"><div class="card">
+
+  <h2>🏆 قائمة اللاعبين</h2>
+
+  <div id="playersList"></div>
+
+</div>
+
+  </div>  <!-- المتجر -->  <div id="shop" class="tab"><div class="card">
+
+  <h2>🛒 متجر الجروب</h2>
+
+  <p class="small">
+    استخدم نقاطك لشراء الجوائز.
+  </p>
+
+  <div id="shopList"></div>
+
+</div>
+
+  </div></div></div><!-- نافذة تأكيد الشراء --><div id="buyModal" class="modal">  <div class="modalBox"><h2>🛒 تأكيد الشراء</h2>
+
+<p id="buyText"></p>
+
+<button class="blue" onclick="confirmBuy()">
+  ✅ شراء
+</button>
+
+<button class="red" onclick="closeBuyModal()">
+  ❌ إلغاء
+</button>
+
+  </div></div><!-- نافذة الرسائل --><div id="messageModal" class="modal">  <div class="modalBox"><div id="messageText" class="message"></div>
+
+<button class="blue" onclick="closeMessage()">
+  تمام 👍
+</button>
+
+  </div></div><script>
+
+let players = [
+
+  {name:"FIB",points:70},
+
+  {name:"يكتب",points:50},
+
+  {name:"محمد",points:0},
+
+  {name:"محمود",points:0},
+
+  {name:"عمرو",points:0},
+
+  {name:"ناصر",points:0}
+
+];
+
+
+let currentPlayerIndex = null;
+
+let pendingBuyIndex = null;
+
+
+const shopItems = [
+
+  {
+    name:"💡 تلميح في فعالية",
+    price:30,
+    desc:"الحصول على تلميح واحد في فعالية."
+  },
+
+  {
+    name:"🔄 تغيير سؤال",
+    price:50,
+    desc:"تغيير سؤال واحد في الفعالية."
+  },
+
+  {
+    name:"🎯 اختيار الموضوع",
+    price:70,
+    desc:"تختار موضوع الفعالية القادمة."
+  },
+
+  {
+    name:"🔁 محاولة إضافية",
+    price:80,
+    desc:"فرصة إضافية في فعالية."
+  },
+
+  {
+    name:"🛡️ حصانة",
+    price:100,
+    desc:"لا تخسر نقاطك في فعالية واحدة."
+  },
+
+  {
+    name:"👑 لقب خاص",
+    price:150,
+    desc:"تحصل على لقب مميز داخل الجروب."
+  },
+
+  {
+    name:"⚡ مضاعفة النقاط",
+    price:200,
+    desc:"مضاعفة نقاطك في فعالية واحدة."
+  },
+
+  {
+    name:"🎲 صندوق الحظ",
+    price:100,
+    desc:"جائزة عشوائية من إدارة الجروب."
+  },
+
+  {
+    name:"🔥 فرصة ذهبية",
+    price:250,
+    desc:"ميزة قوية في فعالية تختارها الإدارة."
+  },
+
+  {
+    name:"🏆 دخول بطولة خاصة",
+    price:300,
+    desc:"الدخول في بطولة خاصة للجروب."
+  },
+
+  {
+    name:"🎁 جائزة مفاجأة",
+    price:350,
+    desc:"جائزة سرية يحددها المسؤول."
+  },
+
+  {
+    name:"💎 VIP لمدة أسبوع",
+    price:500,
+    desc:"ميزة VIP لمدة أسبوع."
+  },
+
+  {
+    name:"👑 ملك الجروب",
+    price:700,
+    desc:"لقب خاص لمدة أسبوع."
+  },
+
+  {
+    name:"🌟 نجم الأسبوع",
+    price:400,
+    desc:"لقب نجم الأسبوع."
+  },
+
+  {
+    name:"🚫 منع خصم",
+    price:180,
+    desc:"تحمي نقاطك من خصم واحد."
+  },
+
+  {
+    name:"💰 استرداد نقاط",
+    price:220,
+    desc:"استرداد جزء من نقاط عملية شراء سابقة."
+  }
+
+];
+
+
+function login(){
+
+  const name =
+    document.getElementById("loginName")
+    .value.trim();
+
+  const error =
+    document.getElementById("loginError");
+
+
+  if(!name){
+
+    error.textContent =
+      "⚠️ اكتب اسمك أولاً";
+
+    return;
+  }
+
+
+  const index =
+    players.findIndex(
+      p =>
+      p.name.toLowerCase()
+      ===
+      name.toLowerCase()
+    );
+
+
+  if(index === -1){
+
+    error.textContent =
+      "❌ الاسم غير موجود حالياً.";
+
+    return;
+  }
+
+
+  currentPlayerIndex = index;
+
+  error.textContent = "";
+
+
+  document
+    .getElementById("loginScreen")
+    .classList.add("hidden");
+
+
+  document
+    .getElementById("site")
+    .classList.remove("hidden");
+
+
+  updateUser();
+
+  showPlayers();
+
+  showShop();
 
 }
 
-/* تحديث الأعضاء */
 
-function updateBuyer(){
+function logout(){
 
-let select=document.getElementById("buyer");
+  currentPlayerIndex = null;
 
-let old=select.value;
 
-select.innerHTML=`
+  document
+    .getElementById("site")
+    .classList.add("hidden");
 
-<option value="">👤 اختر العضو</option>    
-`;    players.forEach((player,index)=>{
 
-select.innerHTML+=`
+  document
+    .getElementById("loginScreen")
+    .classList.remove("hidden");
 
-<option value="${index}">    
-${escapeHTML(player.name)}    
- — ⭐ ${player.points}    
-</option>    `;
 
-});
-
-if(old!=="" && players[old]){
-
-select.value=old;
+  document
+    .getElementById("loginName")
+    .value = "";
 
 }
 
-updateBalance();
+
+function updateUser(){
+
+  if(currentPlayerIndex === null)
+    return;
+
+
+  const player =
+    players[currentPlayerIndex];
+
+
+  const sorted =
+    [...players]
+    .sort(
+      (a,b) =>
+      b.points - a.points
+    );
+
+
+  const rank =
+    sorted.findIndex(
+      p =>
+      p.name === player.name
+    ) + 1;
+
+
+  let medal = "";
+
+  if(rank === 1)
+    medal = "🥇";
+
+  else if(rank === 2)
+    medal = "🥈";
+
+  else if(rank === 3)
+    medal = "🥉";
+
+
+  document
+    .getElementById("welcomeName")
+    .textContent =
+    "👤 " + player.name;
+
+
+  document
+    .getElementById("welcomeRank")
+    .textContent =
+    medal + " المركز " + rank;
+
+
+  document
+    .getElementById("welcomePoints")
+    .textContent =
+    player.points + " نقطة";
 
 }
 
-/* الرصيد */
 
-function updateBalance(){
+function showPlayers(){
 
-let select=document.getElementById("buyer");
+  const box =
+    document.getElementById("playersList");
 
-let balance=document.getElementById("balance");
 
-if(select.value===""){
+  const sorted =
+    [...players]
+    .sort(
+      (a,b) =>
+      b.points - a.points
+    );
 
-balance.innerHTML=
-"اختر عضوًا لعرض رصيده ⭐";
 
-return;
+  box.innerHTML = "";
+
+
+  sorted.forEach(
+    (player,index) => {
+
+      let medal = "";
+
+      if(index === 0)
+        medal = "🥇";
+
+      else if(index === 1)
+        medal = "🥈";
+
+      else if(index === 2)
+        medal = "🥉";
+
+      else
+        medal = "👤";
+
+
+      box.innerHTML += `
+
+        <div class="player">
+
+          <div>
+
+            <div class="playerName">
+
+              <span class="medal">
+                ${medal}
+              </span>
+
+              ${escapeHTML(player.name)}
+
+            </div>
+
+            <div class="playerPoints">
+              💰 ${player.points} نقطة
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }
+  );
 
 }
 
-let player=players[Number(select.value)];
-
-balance.innerHTML=`
-
-💰 رصيد
-<b>${escapeHTML(player.name)}</b>
-
-<br>    <strong>    
-⭐ ${player.points} نقطة    
-</strong>    `;
-
-}
-
-/* عرض المتجر */
 
 function showShop(){
 
-let shop=document.getElementById("shop");
+  const box =
+    document.getElementById("shopList");
 
-shop.innerHTML="";
 
-shopItems.forEach((item,index)=>{
+  box.innerHTML = "";
 
-shop.innerHTML+=`
 
-<div class="shop-item">    <div class="shop-top">    <div class="item-name">    
-${item.name}    
-</div>    <div class="price">    
-⭐ ${item.price}    
-</div>    </div>    <div class="description">    
-${item.desc}    
-</div>    <button    
-class="buy"    
-onclick="buyItem(${index})">
+  shopItems.forEach(
+    (item,index) => {
 
-🛒 شراء
+      box.innerHTML += `
 
-</button>    </div>    `;
+        <div class="shopItem">
 
-});
+          <h3>
+            ${item.name}
+          </h3>
+
+          <p>
+            ${item.desc}
+          </p>
+
+          <div class="price">
+            💰 ${item.price} نقطة
+          </div>
+
+          <button
+            class="mainBtn"
+            onclick="buyItem(${index})">
+
+            🛒 شراء
+
+          </button>
+
+        </div>
+
+      `;
+
+    }
+  );
 
 }
 
-/* فتح نافذة الشراء */
 
 function buyItem(index){
 
-let select=document.getElementById("buyer");
+  if(currentPlayerIndex === null){
 
-if(select.value===""){
+    showMessage(
+      "⚠️ سجل الدخول أولاً."
+    );
 
-showMessage(
-"⚠️",
-"اختر عضوًا",
-"لازم تختار العضو اللي هيشتري الحاجة الأول.",
-"warning"
-);
+    return;
+  }
 
-return;
+
+  const player =
+    players[currentPlayerIndex];
+
+
+  const item =
+    shopItems[index];
+
+
+  if(player.points < item.price){
+
+    showMessage(
+
+      "❌ نقاطك غير كافية." +
+
+      "<br><br>نقاطك: " +
+
+      player.points +
+
+      "<br>السعر: " +
+
+      item.price
+
+    );
+
+    return;
+  }
+
+
+  pendingBuyIndex = index;
+
+
+  document
+    .getElementById("buyText")
+    .innerHTML =
+
+    "هل تريد شراء:<br><br>" +
+
+    "<b>" +
+
+    item.name +
+
+    "</b><br><br>" +
+
+    "السعر: 💰 " +
+
+    item.price +
+
+    " نقطة";
+
+
+  document
+    .getElementById("buyModal")
+    .classList.add("show");
 
 }
 
-let player=players[Number(select.value)];
-
-let item=shopItems[index];
-
-if(player.points<item.price){
-
-showMessage(
-"❌",
-"النقاط غير كافية",
-    العضو: <b>${escapeHTML(player.name)}</b>     <br>     رصيدك: ⭐ ${player.points}     <br>     السعر: ⭐ ${item.price}     <br><br>     ناقصك: ⭐ ${item.price-player.points} نقطة    ,
-"warning"
-);
-
-return;
-
-}
-
-pendingBuyIndex=index;
-
-document.getElementById("buyInfo").innerHTML=`
-
-<b>${escapeHTML(player.name)}</b>
-
-<br><br>
-
-🛒 ${item.name}
-
-<br>    💰 السعر:
-<strong>⭐ ${item.price} نقطة</strong>
-
-<br>    💳 رصيدك الحالي:
-<strong>⭐ ${player.points} نقطة</strong>
-
-<br>    📉 بعد الشراء:
-<strong>⭐ ${player.points-item.price} نقطة</strong>
-
-`;
-
-document.getElementById("buyModal").style.display="flex";
-
-}
-
-/* تأكيد الشراء */
 
 function confirmBuy(){
 
-if(pendingBuyIndex===null){
+  if(currentPlayerIndex === null){
 
-return;
+    closeBuyModal();
 
-}
+    return;
+  }
 
-let select=document.getElementById("buyer");
 
-if(select.value===""){
+  if(pendingBuyIndex === null){
 
-closeBuyModal();
+    closeBuyModal();
 
-return;
+    return;
+  }
 
-}
 
-let player=players[Number(select.value)];
+  const item =
+    shopItems[pendingBuyIndex];
 
-let item=shopItems[pendingBuyIndex];
 
-if(player.points<item.price){
+  const player =
+    players[currentPlayerIndex];
 
-closeBuyModal();
 
-showMessage(
-"❌",
-"النقاط غير كافية",
-"رصيد العضو لم يعد كافيًا لشراء هذه الحاجة.",
-"warning"
-);
+  if(player.points < item.price){
 
-return;
+    closeBuyModal();
 
-}
+    showMessage(
+      "❌ نقاطك غير كافية."
+    );
 
-/* الخصم */
+    return;
+  }
 
-player.points-=item.price;
 
-save();
+  player.points -= item.price;
 
-show();
 
-updateBuyer();
+  closeBuyModal();
 
-closeBuyModal();
 
-/* رسالة النجاح */
+  showPlayers();
 
-showMessage(
-"🎉",
-"تم الشراء بنجاح!",
-`
-تم شراء:
-<br>
-<b>${item.name}</b>
+  updateUser();
 
-<br><br>
 
-تم خصم:
-<strong>⭐ ${item.price} نقطة</strong>
+  showMessage(
 
-<br><br>
+    "🎉 تم الشراء بنجاح!" +
 
-رصيدك الجديد:
-<strong>⭐ ${player.points} نقطة</strong>
-`,
-"success"
-);
+    "<br><br>" +
 
-pendingBuyIndex=null;
+    item.name +
+
+    "<br><br>" +
+
+    "رصيدك الآن: " +
+
+    player.points +
+
+    " نقطة"
+
+  );
+
+
+  pendingBuyIndex = null;
 
 }
 
-/* إغلاق نافذة الشراء */
 
 function closeBuyModal(){
 
-document.getElementById("buyModal").style.display="none";
-
-pendingBuyIndex=null;
-
-}
-
-/* رسالة */
-
-function showMessage(icon,title,text,type){
-
-document.getElementById("messageIcon").innerText=icon;
-
-document.getElementById("messageTitle").innerText=title;
-
-document.getElementById("messageText").innerHTML=text;
-
-let button=document.querySelector("#messageModal .confirm");
-
-if(type==="warning"){
-
-button.style.background="#ff9800";
+  document
+    .getElementById("buyModal")
+    .classList.remove("show");
 
 }
 
-else{
 
-button.style.background="#00c853";
+function showMessage(text){
+
+  document
+    .getElementById("messageText")
+    .innerHTML = text;
+
+
+  document
+    .getElementById("messageModal")
+    .classList.add("show");
 
 }
 
-document.getElementById("messageModal").style.display="flex";
-
-}
-
-/* إغلاق الرسالة */
 
 function closeMessage(){
 
-document.getElementById("messageModal").style.display="none";
+  document
+    .getElementById("messageModal")
+    .classList.remove("show");
 
 }
 
-/* حماية الاسم */
+
+function openTab(tabName){
+
+  document
+    .querySelectorAll(".tab")
+    .forEach(
+      tab =>
+      tab.classList.remove("active")
+    );
+
+
+  document
+    .getElementById(tabName)
+    .classList.add("active");
+
+}
+
 
 function escapeHTML(text){
 
-return text
-.replace(/&/g,"&")
-.replace(/</g,"<")
-.replace(/>/g,">")
-.replace(/"/g,""")
-.replace(/'/g,"'");
+  return String(text)
+
+    .replace(/&/g,"&amp;")
+
+    .replace(/</g,"&lt;")
+
+    .replace(/>/g,"&gt;")
+
+    .replace(/"/g,"&quot;")
+
+    .replace(/'/g,"&#039;");
 
 }
 
-/* تشغيل */
 
-show();
+document
+  .getElementById("loginName")
+  .addEventListener(
+    "keydown",
+    function(e){
 
-showShop();
+      if(e.key === "Enter")
+        login();
 
-updateBuyer();
+    }
+  );
 
-</script>  </body>
-
+</script></body>
 </html>
